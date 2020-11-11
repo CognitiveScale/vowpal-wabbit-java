@@ -54,11 +54,8 @@ build_boost() {
 
 build_vowpal_wabbit() {
   cd "$VOWPAL_WABBIT_SOURCE_DIR"
-  ./autogen.sh || true # autogen.sh distributed with VW does not support cust boost install
-  CXXFLAGS=" -fPIC -fpermissive" ./configure --with-boost="$BOOST_LIB_DIR"
-  make clean
-  make
-  make test
+  rm -rf build && mkdir -p build && cd build && cmake .. -DBUILD_JAVA=ON -DSTATIC_LINK_VW=ON
+  make vw_jni
 }
 
 build_vw_wrapper() {
@@ -82,4 +79,4 @@ clean
 
 build_vowpal_wabbit
 
-build_vw_wrapper
+# build_vw_wrapper
