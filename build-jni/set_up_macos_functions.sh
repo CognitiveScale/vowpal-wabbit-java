@@ -62,7 +62,7 @@ check_brew_installed() {
 install_brew_cask() {
   if ! brew cask 1>/dev/null 2>/dev/null; then
     yellow "Installing brew-cask..."
-    brew install caskroom/cask/brew-cask
+    # brew install homebrew/cask
   fi
 }
 
@@ -102,11 +102,9 @@ install_on_mac() {
 configure_macos() {
   check_brew_installed
   install_brew_cask
-  install_brew_app "wget"
-  install_brew_app "bash"
-  install_brew_app "libtool"
-  install_brew_app "autoconf"
-  install_brew_app "automake"
+  install_brew_app "cmake"
+  install_brew_app "boost"
+  install_brew_app "zlib"
   install_cask_app "virtualbox"
   install_brew_app "docker-machine"
   install_brew_app "docker"

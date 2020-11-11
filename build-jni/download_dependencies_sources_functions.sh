@@ -9,10 +9,11 @@
 # Because of this bug weight in final regressor would be incorrect
 download_vowpal_wabbit_if_needed() {
   if [ ! -d "$VOWPAL_WABBIT_SOURCE_DIR" ]; then
-    git clone https://github.com/JohnLangford/vowpal_wabbit.git "$VOWPAL_WABBIT_SOURCE_DIR"
+    git clone https://github.com/VowpalWabbit/vowpal_wabbit.git "$VOWPAL_WABBIT_SOURCE_DIR"
     cd $VOWPAL_WABBIT_SOURCE_DIR
-    git checkout 10bd09ab06f59291e04ad7805e88fd3e693b7159 -b indeed-vw-patch
-    git apply "$CURRENT_DIR/indeed-vw-patch.diff"
+    git checkout tags/8.8.1 -b v8.8.1
+    # git checkout 10bd09ab06f59291e04ad7805e88fd3e693b7159 -b indeed-vw-patch
+    # git apply "$CURRENT_DIR/indeed-vw-patch.diff"
   fi
 }
 

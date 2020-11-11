@@ -30,10 +30,10 @@ source $CURRENT_DIR/download_dependencies_sources_functions.sh
 
 VW_WRAPPER_SOURCE_DIR="$CURRENT_DIR/../vw_jni/"
 
-if [ -z "$BOOST_SOURCE_DIR" ]; then
-  BOOST_SOURCE_DIR="$BASE_SRC_DIRECTORY/boost"
-  download_boost_if_needed
-fi
+# if [ -z "$BOOST_SOURCE_DIR" ]; then
+#   BOOST_SOURCE_DIR="$BASE_SRC_DIRECTORY/boost"
+#   download_boost_if_needed
+# fi
 
 if [ -z "$VOWPAL_WABBIT_SOURCE_DIR" ]; then
   VOWPAL_WABBIT_SOURCE_DIR="$BASE_SRC_DIRECTORY/vowpal_wabbit"
@@ -78,7 +78,7 @@ build_vw_wrapper() {
 
 clean
 
-build_boost
+# build_boost
 
 build_vowpal_wabbit
 
