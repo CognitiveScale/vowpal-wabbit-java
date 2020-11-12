@@ -54,15 +54,15 @@ build_boost() {
 
 build_vowpal_wabbit() {
   cd "$VOWPAL_WABBIT_SOURCE_DIR"
-  rm -rf build && mkdir -p build && cd build && cmake .. -DBUILD_JAVA=ON -DSTATIC_LINK_VW=ON
-  make vw_jni
+  rm -rf build && mkdir -p build && cd build && cmake .. 
+  make -j4
 }
 
 build_vw_wrapper() {
   cd $VW_WRAPPER_SOURCE_DIR
   ./download-m4-plugins.sh
   ./autogenerate-configure.sh
-  ./configure --with-boostlib="$BOOST_LIB_DIR" --with-vwlib="$VOWPAL_WABBIT_SOURCE_DIR/vowpalwabbit"
+  ./configure --with-vwlib="$VOWPAL_WABBIT_SOURCE_DIR/vowpalwabbit" --with-boostlib="/usr/local/Cellar/boost/1.74.0/lib/"
   make clean
   make vw_jni.lib
   mv vw_jni.lib $VW_WRAPPER_LIB_DIR
@@ -79,4 +79,4 @@ clean
 
 build_vowpal_wabbit
 
-# build_vw_wrapper
+build_vw_wrapper
